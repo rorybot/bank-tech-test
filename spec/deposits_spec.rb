@@ -9,22 +9,29 @@ describe Account do
 
   context 'when interacting with an account' do
     it 'can track balance' do
-      2.times { test_account.change_balance('deposit',1000, '10-01-2012') }
+      2.times { test_account.change_balance('deposit', 1000, '10-01-2012') }
       expect(test_account.balance).to eq 2000
     end
 
     it 'can store the amount and date of deposit' do
-      2.times { test_account.change_balance('deposit',1000, '10-01-2012') }
+      2.times { test_account.change_balance('deposit', 1000, '10-01-2012') }
       p test_account
       expect(test_account.transaction_history.first[:amount]).to eq 1000
       expect(test_account.transaction_history.first[:date]).to eq '10-01-2012'
     end
 
     it 'can make withdrawls from balance' do
-      test_account.change_balance('deposit',1000, '10-01-2012')
-      test_account.change_balance('deposit',2000, '13-01-2012')
-      test_account.change_balance('withdraw',500, '14-01-2012')
+      test_account.change_balance('deposit', 1000, '10-01-2012')
+      test_account.change_balance('deposit', 2000, '13-01-2012')
+      test_account.change_balance('withdraw', 500, '14-01-2012')
       expect(test_account.balance).to eq 2500
+    end
+
+    it 'can calculate balance' do
+      test_account.change_balance('deposit', 1000, '10-01-2012')
+      test_account.change_balance('deposit', 2000, '13-01-2012')
+      test_account.change_balance('withdraw', 500, '14-01-2012')
+      expect(test_account.calculate_balance).to eq 2500
     end
   end
 end

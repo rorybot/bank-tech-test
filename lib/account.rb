@@ -7,7 +7,7 @@ class Account
   end
 
   def change_balance(type, amount, date)
-    transaction(type,amount)
+    transaction(type, amount)
     store_change(type, amount, date)
   end
 
@@ -18,7 +18,7 @@ class Account
     @transaction_history << record
   end
 
-  def transaction(type,amount)
+  def transaction(type, amount)
     type == 'deposit' ? @balance += amount : @balance -= amount
   end
 end

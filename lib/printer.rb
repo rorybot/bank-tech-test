@@ -9,13 +9,24 @@ class Printer
     transaction = account.transaction_history[index]
 
     if transaction[:amount] > 0
-      credit = format('%.2f', transaction[:amount])
+      credit = format_transaction_amount(transaction[:amount])
     else
-      debit = format('%.2f', transaction[:amount])
+      debit = format_transaction_amount(transaction[:amount])
     end
 
     date = transaction[:date].strftime('%d/%m/%Y')
-    balance = calculator.calculate_balance(account.transaction_history)
+    balance = call_balance_from_calculator(calculator, account)
+
     puts string = "#{date} || #{credit} || #{debit} || #{format('%.2f', balance)}"
+  end
+
+  private
+
+  def call_balance_from_calculator(calculator, account)
+    calculator.calculate_balance(account.transaction_history)
+  end
+
+  def format_transaction_amount(amount)
+    format('%.2f', amount)
   end
 end

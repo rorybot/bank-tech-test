@@ -1,6 +1,7 @@
 require 'simplecov'
 require 'simplecov-console'
 require './lib/account'
+require './lib/printer'
 # require_relative 'helpers/session_helpers.rb'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(

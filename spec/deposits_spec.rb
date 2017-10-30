@@ -1,16 +1,10 @@
 describe Account do
   let(:test_account) { Account.new }
 
-  context 'when account is created' do
-    it 'has an empty balance' do
-      expect(test_account.balance).to eq 0
-    end
-  end
-
   context 'when interacting with an account' do
     it 'can track balance' do
       2.times { test_account.change_balance('deposit', 1000, '10-01-2012') }
-      expect(test_account.balance).to eq 2000
+      expect(test_account.query_balance(test_account.transaction_history)).to eq 2000
     end
 
     it 'can store the amount and date of deposit' do
@@ -24,7 +18,7 @@ describe Account do
       test_account.change_balance('deposit', 1000, '10-01-2012')
       test_account.change_balance('deposit', 2000, '13-01-2012')
       test_account.change_balance('withdraw', 500, '14-01-2012')
-      expect(test_account.balance).to eq 2500
+      expect(test_account.query_balance(test_account.transaction_history)).to eq 2500
     end
   end
 end

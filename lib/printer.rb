@@ -5,8 +5,7 @@ class Printer
     puts 'date || credit || debit || balance'
   end
 
-  def print_transaction(account, index, calculator = BalanceCalculator.new)
-    transaction = account.transaction_history[index]
+  def print_transaction(transaction, calculator = BalanceCalculator.new)
 
     if transaction[:amount] > 0
       credit = format_transaction_amount(transaction[:amount])
@@ -15,14 +14,18 @@ class Printer
     end
 
     date = transaction[:date].strftime('%d/%m/%Y')
-    balance = call_balance_from_calculator(calculator, account)
+    balance = transaction[:current_balance]
 
     puts string = "#{date} || #{credit} || #{debit} || #{format('%.2f', balance)}"
   end
 
+  # def print_bank_statement(account)
+  #   account.transaction_history.each{|transaction| print_transaction(account)
+  # end
+
   private
 
-  def call_balance_from_calculator(calculator, account)
+  def call_balance_from_calculator(calculator, transaction)
     calculator.calculate_balance(account.transaction_history)
   end
 

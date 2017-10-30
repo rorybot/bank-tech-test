@@ -9,7 +9,7 @@ class Account
   end
 
   def change_balance(type, amount, date)
-    store_change(type, amount, Time.parse(date))
+    store_change(type, amount, date)
   end
 
   def query_balance(transaction_history)

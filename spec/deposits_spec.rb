@@ -11,8 +11,7 @@ describe Account do
       2.times { test_account.change_balance('deposit', 1000, '10-01-2012') }
       p test_account
       expect(test_account.transaction_history.first[:amount]).to eq 1000
-      expect(test_account.transaction_history.first[:date].to_i).to eq 1326153600
-      expect(test_account.transaction_history.first[:date].year).to eq 2012
+      expect(test_account.transaction_history.first[:date]).to eq '10-01-2012'
     end
 
     it 'can make withdrawls from balance' do

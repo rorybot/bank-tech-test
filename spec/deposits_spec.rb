@@ -13,7 +13,7 @@ describe Account do
       expect(test_account.transaction_history.first[:amount]).to eq 1000
       expect(test_account.transaction_history.first[:date].to_i).to eq 1326153600
       expect(test_account.transaction_history.first[:date].year).to eq 2012
-      expect(test_account.transaction_history.first[:current_balance]).to eq 2000
+      expect(test_account.transaction_history.first[:current_balance]).to eq 1000
     end
 
     it 'can make withdrawls from balance' do

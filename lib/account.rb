@@ -19,7 +19,7 @@ class Account
   private
 
   def store_change(type, amount, date)
-    record = { type: type, amount: amount, date: date }
+    record = { type: type, amount: amount, date: date, current_balance: calculator.calculate_balance(transaction_history)+amount }
     @transaction_history << record
   end
 end

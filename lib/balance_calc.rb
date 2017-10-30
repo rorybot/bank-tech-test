@@ -1,5 +1,4 @@
 class BalanceCalculator
-
   def calculate_balance(transaction_history)
     the_balance = 0
     the_balance += sum_credits(transaction_history)
@@ -21,5 +20,4 @@ class BalanceCalculator
     transaction_history.each { |each_transaction| debit_sum += each_transaction[:amount] if each_transaction[:type] == 'withdraw' }
     debit_sum
   end
-
 end

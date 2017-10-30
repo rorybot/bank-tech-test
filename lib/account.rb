@@ -23,5 +23,4 @@ class Account
   def transaction(type, amount)
     type == 'deposit' ? @balance += amount : @balance -= amount
   end
-
 end

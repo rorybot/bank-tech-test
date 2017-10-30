@@ -26,6 +26,5 @@ describe Account do
       test_account.change_balance('withdraw', 500, '14-01-2012')
       expect(test_account.balance).to eq 2500
     end
-
   end
 end

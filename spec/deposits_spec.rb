@@ -27,11 +27,5 @@ describe Account do
       expect(test_account.balance).to eq 2500
     end
 
-    it 'can calculate balance' do
-      test_account.change_balance('deposit', 1000, '10-01-2012')
-      test_account.change_balance('deposit', 2000, '13-01-2012')
-      test_account.change_balance('withdraw', 500, '14-01-2012')
-      expect(test_account.calculate_balance).to eq 2500
-    end
   end
 end

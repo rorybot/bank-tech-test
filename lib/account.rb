@@ -9,7 +9,6 @@ class Account
   end
 
   def change_balance(type, amount, date)
-    # transaction(type, amount)
     store_change(type, amount, date)
   end
 

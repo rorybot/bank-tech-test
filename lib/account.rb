@@ -1,20 +1,29 @@
 class Account
-  attr_reader :balance, :deposits_history
+  attr_reader :balance, :transaction_history
 
   def initialize
     @balance = 0
-    @deposits_history = []
+    @transaction_history = []
   end
 
-  def deposit(amount, date)
-    @balance += amount
-    store_deposit(amount, date)
+  def change_balance(type, amount, date)
+    transaction(type,amount)
+    store_change(type, amount, date)
   end
+  #
+  # def withdraw(amount, date)
+  #   @balance -= amount
+  #   store_deposti
+  # end
 
   private
 
-  def store_deposit(amount, date)
-    record = { amount: amount, date: date }
-    @deposits_history << record
+  def store_change(type, amount, date)
+    record = { type: type, amount: amount, date: date }
+    @transaction_history << record
+  end
+
+  def transaction(type,amount)
+    type == 'deposit' ? @balance += amount : @balance -= amount
   end
 end

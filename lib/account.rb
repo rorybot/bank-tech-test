@@ -4,7 +4,6 @@ class Account
   attr_reader :calculator, :transaction_history
 
   def initialize(calculator = BalanceCalculator.new)
-    @balance = 0
     @calculator = calculator
     @transaction_history = []
   end
@@ -24,8 +23,4 @@ class Account
     record = { type: type, amount: amount, date: date }
     @transaction_history << record
   end
-  #
-  # def transaction(type, amount)
-  #   type == 'deposit' ? @balance += amount : @balance -= amount
-  # end
 end

@@ -10,11 +10,6 @@ class Account
     transaction(type,amount)
     store_change(type, amount, date)
   end
-  #
-  # def withdraw(amount, date)
-  #   @balance -= amount
-  #   store_deposti
-  # end
 
   private
 

@@ -10,7 +10,7 @@ class Printer
     credit = '%.2f' % transaction[:amount] if transaction[:type] == 'deposit'
     debit = '%.2f' % transaction[:amount] if transaction[:type] == 'withdrawl'
     date = transaction[:date].strftime("%d/%m/%Y")
-    balance = calculator.calculate_balance
+    balance = calculator.calculate_balance(account.transaction_history)
     puts string = "#{date} || #{credit} || #{debit} || #{'%.2f' % balance}"
   end
 end

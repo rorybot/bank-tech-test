@@ -1,5 +1,6 @@
 require 'simplecov'
 require 'simplecov-console'
+require './lib/account'
 # require_relative 'helpers/session_helpers.rb'
 
 

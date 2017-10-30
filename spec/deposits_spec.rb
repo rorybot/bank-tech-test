@@ -1,9 +1,10 @@
 describe Account do
-  let!(:account) do
-  end
+    let(:account) { Account.new }
 
-  context 'when some state occurs' do
-    it 'something predictable can happen' do
+
+  context 'when account is created' do
+    it 'has an empty balance' do
+      expect(account.balance).to eq 0
     end
   end
 end

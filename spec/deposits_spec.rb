@@ -8,9 +8,10 @@ describe Account do
   end
 
   context 'when interacting with an account' do
-    it 'can have a balance deposit' do
+    it 'can store a record of deposits' do
       empty_account.deposit 1000
-      expect(empty_account.balance).to eq 1000
+      empty_account.deposit 2000
+      expect(empty_account.deposits_history.first).to eq 1000
     end
   end
 end

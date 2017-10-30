@@ -13,14 +13,6 @@ class Account
     store_change(type, amount, date)
   end
 
-  def calculate_balance
-    the_balance = 0
-    the_balance += sum_credits(transaction_history)
-    the_balance -= sum_debits(transaction_history)
-
-    the_balance
-  end
-
   private
 
   def store_change(type, amount, date)

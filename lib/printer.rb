@@ -14,14 +14,15 @@ class Printer
     end
 
     date = transaction[:date].strftime('%d/%m/%Y')
-    balance = transaction[:current_balance]
-
-    puts string = "#{date} || #{credit} || #{debit} || #{format('%.2f', balance)}"
+    balance = format('%.2f', transaction[:current_balance])
+    
+    puts string = "#{date} || #{credit} || #{debit} || #{ balance}"
   end
 
-  # def print_bank_statement(account)
-  #   account.transaction_history.each{|transaction| print_transaction(account)
-  # end
+  def print_bank_statement(account)
+    print_header
+    account.transaction_history.each{|transaction| print_transaction(transaction)}
+  end
 
   private
 
@@ -30,6 +31,6 @@ class Printer
   end
 
   def format_transaction_amount(amount)
-    format('%.2f', amount)
+    format('%.2f', amount.abs)
   end
 end

@@ -3,11 +3,10 @@ require 'simplecov-console'
 require './lib/account'
 # require_relative 'helpers/session_helpers.rb'
 
-
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [SimpleCov::Formatter::Console,
    SimpleCov::Formatter::HTMLFormatter]
- )
+)
 SimpleCov.start
 
 RSpec.configure do |config|

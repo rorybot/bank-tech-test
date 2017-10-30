@@ -11,6 +11,7 @@ describe Account do
     it 'can store a record of deposits' do
       empty_account.deposit 1000
       empty_account.deposit 2000
+      expect(empty_account.balance).to eq 3000
       expect(empty_account.deposits_history.first).to eq 1000
     end
   end

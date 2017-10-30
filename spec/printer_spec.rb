@@ -2,7 +2,7 @@ describe Printer do
   let(:test_printer) { Printer.new }
 
   let(:test_account) do
-    dummy_transaction = [{ amount: 1000, date: Time.new(2012, 01, 10), current_balance: 1000 }, { amount: 2000, date: Time.new(2012, 01, 13), current_balance: 3000 }, { amount: -500, date: Time.new(2012, 01, 14), current_balance: 1000 }]
+    dummy_transaction = [{ amount: 1000, date: Time.new(2012, 0o1, 10), current_balance: 1000 }, { amount: 2000, date: Time.new(2012, 0o1, 13), current_balance: 3000 }, { amount: -500, date: Time.new(2012, 0o1, 14), current_balance: 1000 }]
 
     double('Account', transaction_history: dummy_transaction)
   end
@@ -22,10 +22,11 @@ describe Printer do
 
     it 'can print a full bank statement' do
       expect { test_printer.print_bank_statement(test_account) }.to output(
-"date || credit || debit || balance
-10/01/2012 || 1000.00 ||  || 1000.00
-13/01/2012 || 2000.00 ||  || 3000.00
-14/01/2012 ||  || 500.00 || 1000.00\n").to_stdout
+        "date || credit || debit || balance
+        10/01/2012 || 1000.00 ||  || 1000.00
+        13/01/2012 || 2000.00 ||  || 3000.00
+        14/01/2012 ||  || 500.00 || 1000.00\n"
+      ).to_stdout
     end
   end
 end

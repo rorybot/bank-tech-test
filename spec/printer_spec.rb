@@ -3,7 +3,8 @@ describe Printer do
 
   context 'when accessed' do
     it 'can print a properly formatted header' do
-      expect ( test_printer.format_header(["date","credit", "debit", "balance"]) ).to eq "date || credit || debit || balance"
+      expect{ test_printer.print_header }.to output("date || credit || debit || balance\n").to_stdout
+
     end
   end
 

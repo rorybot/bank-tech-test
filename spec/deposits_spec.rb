@@ -8,16 +8,10 @@ describe Account do
   end
 
   context 'when interacting with an account' do
-    it 'can store a record of deposits' do
-      2.times {empty_account.deposit 1000}
-      expect(empty_account.balance).to eq 2000
-      expect(empty_account.deposits_history.first).to eq 1000
-    end
-
-    it 'can store the date of deposit' do
-      empty_account.deposit 1000, "10-01-2012"
-      expect(empty_account.deposits_history.first.amount).to eq 1000
-      expect(empty_account.deposits_history.first.amount).to eq "10-01-2012"
+    it 'can store the amount and date of deposit' do
+      2.times { empty_account.deposit(1000, '10-01-2012') }
+      expect(empty_account.deposits_history.first[:amount]).to eq 1000
+      expect(empty_account.deposits_history.first[:date]).to eq '10-01-2012'
     end
   end
 end

@@ -6,14 +6,15 @@ class Account
     @deposits_history = []
   end
 
-  def deposit(amount)
+  def deposit(amount, date)
     @balance += amount
-    store_deposit(amount)
+    store_deposit(amount, date)
   end
 
   private
 
-  def store_deposit(amount)
-    @deposits_history << amount
+  def store_deposit(amount, date)
+    record = { amount: amount, date: date }
+    @deposits_history << record
   end
 end

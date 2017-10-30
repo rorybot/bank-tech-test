@@ -14,6 +14,37 @@ https://github.com/makersacademy/course/blob/master/individual_challenges/bank_t
 - To see your balance, create a new Printer with the 'new' command
   - Call the #print_bank_statement method, passing the Account you'd like to see the balance of as an argument
 
+# Tech used
+  - Vanilla Ruby
+  - Rspec
+  - Rubocop
+
+# Example run
+
+```sh
+[1] pry(main)> load './lib/printer.rb'
+=> true
+[2] pry(main)> acc = Account.new
+=> #<Account:0x007fc05e1c3c40
+ @calculator=#<BalanceCalculator:0x007fc05e1c3bc8>,
+ @transaction_history=[]>
+[3] pry(main)> print = Printer.new
+=> #<Printer:0x007fc05e12f8d8>
+[4] pry(main)> acc.change_balance(-1000, '14-01-2012')
+=> [{:amount=>-1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>-1000}]
+[5] pry(main)> acc.change_balance(1000, '14-01-2012')
+=> [{:amount=>-1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>-1000},
+ {:amount=>1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>0}]
+[6] pry(main)> acc.change_balance(1000, '14-01-2012')
+=> [{:amount=>-1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>-1000},
+ {:amount=>1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>0},
+ {:amount=>1000, :date=>2012-01-14 00:00:00 +0000, :current_balance=>1000}]
+[7] pry(main)> print.print_bank_statement(acc)
+date || credit || debit || balance
+14/01/2012 ||  || 1000.00 || -1000.00
+14/01/2012 || 1000.00 ||  || 0.00
+14/01/2012 || 1000.00 ||  || 1000.00
+```
 
 Original Criteria
 ---

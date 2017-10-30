@@ -8,8 +8,8 @@ class Account
     @transaction_history = []
   end
 
-  def change_balance(type, amount, date)
-    store_change(type, amount, Time.parse(date))
+  def change_balance(amount, date)
+    store_change(amount, Time.parse(date))
   end
 
   def query_balance(transaction_history)
@@ -18,8 +18,8 @@ class Account
 
   private
 
-  def store_change(type, amount, date)
-    record = { type: type, amount: amount, date: date, current_balance: calculator.calculate_balance(transaction_history)+amount }
+  def store_change(amount, date)
+    record = {amount: amount, date: date, current_balance: calculator.calculate_balance(transaction_history)+amount }
     @transaction_history << record
   end
 end

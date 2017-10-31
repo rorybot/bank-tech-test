@@ -8,13 +8,13 @@ describe Printer do
   end
 
   let(:test_transaction1) do
-    double('Transaction', amount: 1000, date: Time.new(2012, 0o1, 10), balance: 1000)
+    double('Transaction', amount: 1000, date: Time.new(2012, 0o1, 10), balance: 1000, credit: 1000, debit: nil)
   end
   let(:test_transaction2) do
-    double('Transaction', amount: 2000, date: Time.new(2012, 0o1, 13), balance: 3000)
+    double('Transaction', amount: 2000, date: Time.new(2012, 0o1, 13), balance: 3000, credit: 2000, debit: nil)
   end
   let(:test_transaction3) do
-    double('Transaction', amount: -500, date: Time.new(2012, 0o1, 14), balance: 2500)
+    double('Transaction', amount: -500, date: Time.new(2012, 0o1, 14), balance: 2500, credit: nil, debit: -500)
   end
 
   let(:test_calc) do

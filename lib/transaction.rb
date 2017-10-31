@@ -6,4 +6,12 @@ class Transaction
     @date = date
     @balance = balance
   end
+
+  def credit
+    return @amount if @amount > 0
+  end
+
+  def debit
+    return @amount if @amount < 0
+  end
 end

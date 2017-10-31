@@ -22,10 +22,7 @@ describe Printer do
 
     it 'can print a full bank statement' do
       expect { test_printer.print_bank_statement(test_account) }.to output(
-        "date || credit || debit || balance
-        10/01/2012 || 1000.00 ||  || 1000.00
-        13/01/2012 || 2000.00 ||  || 3000.00
-        14/01/2012 ||  || 500.00 || 1000.00\n"
+        "date || credit || debit || balance\n10/01/2012 || 1000.00 ||  || 1000.00\n13/01/2012 || 2000.00 ||  || 3000.00\n14/01/2012 ||  || 500.00 || 1000.00\n"
       ).to_stdout
     end
   end

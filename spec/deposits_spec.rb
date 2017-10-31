@@ -9,10 +9,10 @@ describe Account do
 
     it 'can store the amount and date and current balance of deposit' do
       2.times { test_account.change_balance(1000, '10-01-2012') }
-      expect(test_account.transaction_history.first[:amount]).to eq 1000
-      expect(test_account.transaction_history.first[:date].to_i).to eq 1_326_153_600
-      expect(test_account.transaction_history.first[:date].year).to eq 2012
-      expect(test_account.transaction_history.first[:current_balance]).to eq 1000
+      expect(test_account.transaction_history.first.amount).to eq 1000
+      expect(test_account.transaction_history.first.date.to_i).to eq 1_326_153_600
+      expect(test_account.transaction_history.first.date.year).to eq 2012
+      expect(test_account.transaction_history.first.balance).to eq 1000
     end
 
     it 'can make withdrawls from balance' do

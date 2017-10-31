@@ -1,4 +1,5 @@
 require_relative 'balance_calc'
+require_relative 'transaction'
 
 class Account
   attr_reader :calculator, :transaction_history
@@ -18,8 +19,18 @@ class Account
 
   private
 
+  # def store_change(amount, date, balance = (calculator.calculate_balance(transaction_history) + amount))
+  #   record = { amount: amount, date: date, current_balance: balance }
+  #   @transaction_history << record
+  # end
+
   def store_change(amount, date)
-    record = { amount: amount, date: date, current_balance: calculator.calculate_balance(transaction_history) + amount }
-    @transaction_history << record
+    new_transaction = Transaction.new(amount, date, get_current_balance(amount))
+
+    @transaction_history << new_transaction
+  end
+
+  def get_current_balance(amount)
+    (calculator.calculate_balance(transaction_history) + amount)
   end
 end

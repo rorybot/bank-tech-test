@@ -6,12 +6,12 @@ class Printer
   end
 
   def print_transaction(transaction, _calculator = BalanceCalculator.new)
-    credit = format_transaction_amount(transaction[:amount]) if transaction[:amount] > 0
+    credit = format_transaction_amount(transaction.amount) if transaction.amount > 0
 
-    debit = format_transaction_amount(transaction[:amount]) if transaction[:amount] < 0
+    debit = format_transaction_amount(transaction.amount) if transaction.amount < 0
 
-    date = transaction[:date].strftime('%d/%m/%Y')
-    balance = format('%.2f', transaction[:current_balance])
+    date = transaction.date.strftime('%d/%m/%Y')
+    balance = format('%.2f', transaction.balance)
 
     puts string = "#{date} || #{credit} || #{debit} || #{balance}"
   end

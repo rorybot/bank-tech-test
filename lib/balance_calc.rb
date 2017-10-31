@@ -6,7 +6,7 @@ class BalanceCalculator
   private
 
   def sum_transactions(transaction_history)
-    money_array = transaction_history.map { |transaction| transaction[:amount] }
+    money_array = transaction_history.map(&:amount)
     money_array.inject(0) { |sum, x| sum + x }
   end
 end

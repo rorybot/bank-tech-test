@@ -8,10 +8,10 @@ class Transaction
   end
 
   def credit
-    return @amount if @amount > 0
+    return amount if amount > 0
   end
 
   def debit
-    return @amount if @amount < 0
+    return amount if amount < 0
   end
 end

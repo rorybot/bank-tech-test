@@ -9,8 +9,9 @@ class Account
     @transaction_history = []
   end
 
-  def change_balance(amount, date)
-    store_change(amount, Time.parse(date))
+  def change_balance(amount, date, balance = get_new_balance(amount))
+    new_transaction = Transaction.new(amount, Time.parse(date), balance)
+    store_transaction(new_transaction)
   end
 
   def query_balance(transaction_history)
@@ -19,13 +20,11 @@ class Account
 
   private
 
-  def store_change(amount, date)
-    new_transaction = Transaction.new(amount, date, get_current_balance(amount))
-
+  def store_transaction(new_transaction)
     @transaction_history << new_transaction
   end
 
-  def get_current_balance(amount)
+  def get_new_balance(amount)
     (calculator.calculate_balance(transaction_history) + amount)
   end
 end

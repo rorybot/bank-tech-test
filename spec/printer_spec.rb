@@ -17,17 +17,13 @@ describe Printer do
     double('Transaction', amount: -500, date: Time.new(2012, 0o1, 14), balance: 2500, credit: nil, debit: -500)
   end
 
-  let(:test_calc) do
-    double('Calculator', calculate_balance: 1000)
-  end
-
   context 'when accessed' do
     it 'can print a properly formatted header' do
       expect { test_printer.print_header }.to output("date || credit || debit || balance\n").to_stdout
     end
 
     it 'can print a transaction' do
-      expect { test_printer.print_transaction(test_account.transaction_history[0], test_calc) }.to output("10/01/2012 || 1000.00 ||  || 1000.00\n").to_stdout
+      expect { test_printer.print_transaction(test_account.transaction_history[0]) }.to output("10/01/2012 || 1000.00 ||  || 1000.00\n").to_stdout
     end
 
     it 'can print a full bank statement' do

@@ -19,11 +19,6 @@ class Account
 
   private
 
-  # def store_change(amount, date, balance = (calculator.calculate_balance(transaction_history) + amount))
-  #   record = { amount: amount, date: date, current_balance: balance }
-  #   @transaction_history << record
-  # end
-
   def store_change(amount, date)
     new_transaction = Transaction.new(amount, date, get_current_balance(amount))
 

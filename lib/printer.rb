@@ -28,6 +28,6 @@ class Printer
   end
 
   def format_transaction_amount(amount)
-    format('%.2f', amount.abs) if amount != nil
+    format('%.2f', amount.abs) unless amount.nil?
   end
 end
